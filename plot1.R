@@ -9,6 +9,6 @@ dataed$Time<-as.POSIXct(paste(dataed$Date, dataed$Time), format="%Y-%m-%d %H:%M:
 #converting the rest of the columns into numeric with as.numeric()
 dataed[,3:9]<-sapply(dataed[,3:9], as.numeric)
 #Creating the PNG file
-png(filename = "plot1.png")
+png(filename = "plot1.png" ,width=480, height=480, units= "px")
 with(hist(dataed$Global_active_data,xlab = "Global Active data(watts)",ylab = "Frequency",main = "Global Active data",col = "red"))
 dev.off()
