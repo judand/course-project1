@@ -12,7 +12,7 @@
 > #Creating the "Global_active_power" 
 > powerseries<-ts(datachange$Global_active_power,frequency = 1440,start = 0)
 > #Creating the file 
-> png(filename = "plot2.png")
+> png(filename = "plot2.png",width=480, height=480, units= "px")
 >#note. days in half because i dont know how make this
 > plot.ts(powerseries,ylab = "Global Active data (Kilowatts)",xlab = "Days)")
 > dev.off() 
