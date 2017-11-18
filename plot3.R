@@ -16,7 +16,7 @@
 > submetering2series<-ts(data3ex$Sub_metering_2,frequency = 1440,start = 0)
 > submetering3series<-ts(data3ex$Sub_metering_3,frequency = 1440,start = 0)
 > #Creating the file 
-> png(filename = "plot3.png")
+> png(filename = "plot3.png",width=480, height=480, units= "px")
 > plot.ts(submetering1series,ylab = "Energy sub metering",ylim = c(0,40),xlab = "Days")
 > par(new= T)
 > plot.ts(submetering2series,ylab = "Energy sub metering",xlab = "Days",ylim = c(0,40),col = "red")
