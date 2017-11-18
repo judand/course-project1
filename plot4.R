@@ -8,8 +8,8 @@ Usted puede redistribuirlo bajo ciertas circunstancias.
 Escriba 'license()' o 'licence()' para detalles de distribucion.
 
 R es un proyecto colaborativo con muchos contribuyentes.
-Escriba 'contributors()' para obtener más información y
-'citation()' para saber cómo citar R o paquetes de R en publicaciones.
+Escriba 'contributors()' para obtener mÃ¡s informaciÃ³n y
+'citation()' para saber cÃ³mo citar R o paquetes de R en publicaciones.
 
 Escriba 'demo()' para demostraciones, 'help()' para el sistema on-line de ayuda,
 o 'help.start()' para abrir el sistema de ayuda HTML con su navegador.
@@ -36,7 +36,7 @@ Escriba 'q()' para salir de R.
 > voltageseries<-ts(data4ex$Voltage,frequency = 1440,start = 0)
 > Reactiveseries<-ts(data4ex$Global_reactive_power,frequency = 1440,start = 0)
 > #Creating the file 
-> png(filename = "plot4.png")
+> png(filename = "plot4.png",width=480, height=480, units= "px")
 > par(mfcol = c(2,2),mar = c(6,6,3,3))
 > plot.ts(powerseries,ylab = "Global Active Power (Kilowatts)",xlab = "Days")
 > plot.ts(submetering1series,ylab = "Energy sub metering",ylim = c(0,40),xlab = "Days")
