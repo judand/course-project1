@@ -1,21 +1,10 @@
 
 
-> data<-read.table("household.txt",header = TRUE,sep = ";", stringsAsFactors = FALSE)
-> #convert "Date  as.date()
-> data$Date<-as.Date(data$Date,"%d/%m/%Y")
-> #Subset the data with the necessary dates
-> datachange<-subset(data,Date >= "2007-02-01" & Date <= "2007-02-02") 
-> #convert the type of "Time" with as.POSIXct()
-> datachange$Time<-as.POSIXct(paste(datachange$Date, datachange$Time), format="%Y-%m-%d %H:%M:%S")
-> #converting the rest of the columns  with as.numeric()
-> datachange[,3:9]<-sapply(datachange[,3:9], as.numeric)
-> #Creating the "Global_active_power" 
-> powerseries<-ts(datachange$Global_active_power,frequency = 1440,start = 0)
-> #Creating the file 
-> png(filename = "plot2.png",width=480, height=480, units= "px")
->#note. days in half because i dont know how make this
-> plot.ts(powerseries,ylab = "Global Active data (Kilowatts)",xlab = "Days)")
-> dev.off() 
-null device 
-          1  
-> 
+>file <- read.table("/household_power_consumption.txt", header=T, sep=";", na.strings="?")
+usedData <- file[file$Date %in% c("1/2/2007","2/2/2007"),]
+setTime <- strptime(paste(usedData$Date, usedData$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
+finalFile <- cbind(setTime,usedData)
+
+png(file="plot2.png",bg="white",width=480, height=480, units= "px")
+plot(finalFile$setTime, finalFile$Global_active_power, type = "l", col="black", xlab="",ylab="Global Active Power(kilowatts)")
+dev.off()
