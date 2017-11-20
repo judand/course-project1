@@ -1,14 +1,9 @@
+file <- read.table("/household_power_consumption.txt", header=T, sep=";", na.strings="?")
+usedData <- file[file$Date %in% c("1/2/2007","2/2/2007"),]
+setTime <- strptime(paste(usedData$Date, usedData$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
+finalFile <- cbind(setTime,usedData)
 
-data<-read.table("household.txt",header = TRUE,sep = ";", stringsAsFactors = FALSE)
-#converting the type of "Date" with as.date()
-data$Date<-as.Date(data$Date,"%d/%m/%Y")
-#Subsetting the data necessarys
-dataed<-subset(data,Date >= "2007-02-01" & Date <= "2007-02-02") 
-#converting the type of "Time"column from "character" to "Time with as.POSIXct()
-dataed$Time<-as.POSIXct(paste(dataed$Date, dataed$Time), format="%Y-%m-%d %H:%M:%S")
-#converting the rest of the columns into numeric with as.numeric()
-dataed[,3:9]<-sapply(dataed[,3:9], as.numeric)
-#Creating the PNG file
-png(filename = "plot1.png" ,width=480, height=480, units= "px")
-with(hist(dataed$Global_active_data,xlab = "Global Active data(watts)",ylab = "Frequency",main = "Global Active data",col = "red"))
+png(file="plot1.png",bg="white",width=480, height=480, units= "px")
+hist(finalFile$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power(kilowatts)", ylab="Frequency")
 dev.off()
+
